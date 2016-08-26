@@ -40,7 +40,7 @@ angular.module("exercise1")
             restrict:"E",
             // replace:false,
             template: function(){
-                return "<select ng-model='type' ng-options='label for value in types' ng-change='changeChart()'></select>" +
+                return "<select ng-model='type' ng-options='label as value in types' ng-change='changeChart()'></select>" +
                     // "<option disabled selected>Chart Type</option> </select>" +
                     "<canvas width='300' height='350'>";
             },
