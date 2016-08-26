@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercise 1</title>
+    <script src="../../angular.js"></script>
+    <script src="ex1.js"></script>
+    <script src="graphs.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.1/Chart.bundle.js"></script>
+    <link href="../../bootstrap.css" rel="stylesheet">
+</head>
+<body ng-app="exercise1">
+    <div class="well">
+        <div class="panel panel-default">
+            <h3>Custom directives</h3>
+            <div class="panel-body" ng-controller="charts">
+                <h4>Charts</h4>
+                <ex1-graph type="bar" data="getData()"></ex1-graph>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
