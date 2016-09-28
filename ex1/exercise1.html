@@ -1,21 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="exercise1">
 <head>
     <meta charset="UTF-8">
     <title>Exercise 1</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+    <!--<script src="../jquery.js"></script>-->
+    <script src="../jquery-3.1.1.min.js"></script>
+    <script src="../jquery-ui.min.js"></script>
     <script src="../../angular.js"></script>
+    <script src="pokemon.js"></script>
     <script src="ex1.js"></script>
-    <script src="graphs.js"></script>
+    <script src="angular-route.js"></script>
+    <script src="charts.js"></script>
+    <script src="spreadsheet.js"></script>
+    <script src="infinite.js"></script>
+    <script src="form.js"></script>
+    <!--<script src="multiform.js"></script>-->
+    <link href="../reset.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.1/Chart.bundle.js"></script>
     <link href="../../bootstrap.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+    <base href="http://localhost:63342/Pro%20Angular%20JS/angularJS/EXERCISES/ex1/">
 </head>
-<body ng-app="exercise1">
+<body>
     <div class="well">
+        <div class="myMenu">
+            <a href="charts" class="myMenu-option">Charts</a>
+            <a href="spread" class="myMenu-option">Spreadsheet</a>
+            <a href="gallery" class="myMenu-option">Gallery</a>
+            <a href="form" class="myMenu-option">Form</a>
+            <a href="multiform" class="myMenu-option">Multi-Step Form</a>
+        </div>
         <div class="panel panel-default">
             <h3>Custom directives</h3>
-            <div class="panel-body" ng-controller="charts">
-                <h4>Charts</h4>
-                <ex1-graph type="bar" data="getData()"></ex1-graph>
+            <div class="panel-body" ng-controller="pokeCtrl">
+                <div ng-view></div>
             </div>
         </div>
     </div>

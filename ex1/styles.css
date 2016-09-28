@@ -1,0 +1,78 @@
+/*/////////////////////////////MENU STYLES//////////////////////*/
+.myMenu{
+    height: 50px;
+    background-color: rgb(182, 182, 191);
+}
+.myMenu-option{
+    display: inline-block;
+    text-decoration: none;
+    margin:5px 0;
+    padding: 10px;
+    color: #eaeaea;
+}
+.myMenu-option:hover{
+    color: #fff;
+    text-decoration: none;
+    text-shadow: 0 0 10px white;
+}
+.myMenu-option:visited{
+    text-decoration: none;
+    color: #eaeaea;
+}
+.myMenu-option:not(:last-child){
+    border-right: 1px solid #FFF;
+}
+/*/////////////////////////////////SPREADSHEET STYLES////////////////////////////*/
+.inputs{
+    border:none;
+    margin:0;
+    padding:0;
+}
+.inputStat{
+    width:50px;
+}
+/*///////////////////////////////////INFINITE SCROLL STYLES///////////////////////////*/
+.galleryImg{
+    margin:1% 5%;
+    display:inline-block;
+    border:1px solid #B6B6BF;
+    width:40%;
+    padding:5px;
+}
+.galleryPic{
+    width:90%;
+    margin:2% 5%;
+}
+/*////////////////////////////////FORM STYLES////////////////////////////*/
+.stats{
+    width:25%;
+    margin:2%;
+    padding:10px;
+    float:left;
+}
+.flag{
+    width: 100%;
+    position:relative;
+}
+.error{
+    color:white;
+    font-size:10px;
+    font-weight:bold;
+    background-color: rgba(255, 15, 34, 0.7);
+    padding:5px;
+    border-radius: 5px;
+    position:relative;
+    left:20px;
+    /*top:-60px;*/
+    /*z-index: 2;*/
+}
+/*form-group{*/
+    /*position:relative;*/
+/*}*/
+input.ng-invalid.ng-dirty{
+    border-color:rgb(255, 15, 34);
+}
+input[type='number']{
+    -moz-appearance: textfield;
+    -webkit-appearance: textfield;
+}
