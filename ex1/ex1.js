@@ -132,8 +132,129 @@ angular.module("exercise1",['pokemon','ngRoute'])
                             ]}
                         ]}
                     ]
-                },
-                // {node:'button', class:'btn btn-primary', content:'Create', attrs:[{name:'ng-click',value:'create()'}]}
+                }
             ]
-        }]
+        }];
+        $scope.multiform=[
+            {
+                node:'form',
+                name:'pokeName',
+                children:[
+                    {node:'div', class:'form-group',children:[
+                        {node:'label',content:'Name:'},
+                        {node:'input',name:'name',class:'form-control',attrs:[
+                            {name:'required'},
+                            {name:'pattern',value:'[\\D]+'},
+                            {name:'sameAs',value:'name2'},
+                            {name:'ng-model'}
+                        ]}
+                    ]},
+                    {node:'div', class:'form-group',children:[
+                        {node:'label',content:'Repeat Name:'},
+                        {node:'input',name:'name2',class:'form-control',attrs:[
+                            {name:'required'},
+                            {name:'pattern',value:'[\\D]+'},
+                            {name:'sameAs',value:'name'},
+                            {name:'ng-model'}
+                        ]}
+                    ]}
+                ]
+            },      /////////END OF FIRST STEP
+            {
+                node:'form',
+                name:'pokeMisc',
+                children:[
+                    {node:'div', class:'form-group',children:[
+                        {node:'label',content:'Level:'},
+                        {node:'input',name:'level',class:'form-control',attrs:[
+                            {name:'type',value:'number'},
+                            {name:'required'},
+                            {name:'min',value:1},
+                            {name:'max',value:100},
+                            {name:'ng-model'}
+                        ]}
+                    ]},
+                    {node:'div', class:'form-group',children:[
+                        {node:'label',content:'Date of Capture:'},
+                        {node:'input',name:'date',class:'form-control',attrs:[
+                            {name:'required'},
+                            {name:'dateConfig',value:{
+                                dateFormat:'yy-mm-dd',
+                                defaultDate:0,
+                                maxDate:0,
+                                minDate:'-91y'
+                            }},
+                            {name:'type',value:'date'},
+                            {name:'ng-model'}
+                        ]}
+                    ]}
+                ]
+            },      ///////END OF SECOND STEP
+            {
+                node:'form',
+                name:'pokeStats',
+                children:[
+                    {node:'div', class:'form-group stats', children:[
+                        {node:'label', content:'Health Points:', attrs:[{name:'id',value:'hp'}]},
+                        {node:'input', class:'form-control', name:'hp', attrs:[
+                            {name:'type',value:'number'},
+                            {name:'max',value:500},
+                            {name:'min',value:1},
+                            {name:'required'},
+                            {name:'ng-model'}
+                        ]}
+                    ]},
+                    {node:'div', class:'form-group stats', children:[
+                        {node:'label', content:'Attack:', attrs:[{name:'id',value:'atk'}]},
+                        {node:'input', class:'form-control', name:'atk', attrs:[
+                            {name:'type',value:'number'},
+                            {name:'max',value:300},
+                            {name:'min',value:1},
+                            {name:'required'},
+                            {name:'ng-model'}
+                        ]}
+                    ]},
+                    {node:'div', class:'form-group stats', children:[
+                        {node:'label', content:'Defense:', attrs:[{name:'id',value:'def'}]},
+                        {node:'input', class:'form-control', name:'def', attrs:[
+                            {name:'type',value:'number'},
+                            {name:'max',value:300},
+                            {name:'min',value:1},
+                            {name:'required'},
+                            {name:'ng-model'}
+                        ]}
+                    ]},
+                    {node:'div', class:'form-group stats', children:[
+                        {node:'label', content:'Speed:', attrs:[{name:'id',value:'spd'}]},
+                        {node:'input', class:'form-control', name:'spd', attrs:[
+                            {name:'type',value:'number'},
+                            {name:'max',value:300},
+                            {name:'min',value:1},
+                            {name:'required'},
+                            {name:'ng-model'}
+                        ]}
+                    ]},
+                    {node:'div', class:'form-group stats', children:[
+                        {node:'label', content:'Special Attack:', attrs:[{name:'id',value:'spatk'}]},
+                        {node:'input', class:'form-control', name:'spatk', attrs:[
+                            {name:'type',value:'number'},
+                            {name:'max',value:300},
+                            {name:'min',value:1},
+                            {name:'required'},
+                            {name:'ng-model'}
+                        ]}
+                    ]},
+                    {node:'div', class:'form-group stats', children:[
+                        {node:'label', content:'Special Defense:', attrs:[{name:'id',value:'spdef'}]},
+                        {node:'input', class:'form-control', name:'spdef', attrs:[
+                            {name:'type',value:'number'},
+                            {name:'max',value:300},
+                            {name:'min',value:1},
+                            {name:'required'},
+                            {name:'ng-model'}
+                        ]}
+                    ]}
+                ]
+            }       ///////////END OF THIRD STEP
+        ]
     });

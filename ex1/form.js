@@ -6,25 +6,41 @@ angular.module("exercise1").directive("ex1Form",function($compile) {
         restrict: "E",
         scope:true,
         link: function(scope,element,attrs){
-            var cur=0;
+            scope.cur=0;
             scope.info=scope[attrs.info];
-            if(scope.info[cur+1]){
-                scope.info[cur].children.push({
-                    node:'button',
-                    class:'btn btn-primary',
-                    content:'Next',
-                    attrs:[{name:'ng-click',value:'next()'}]
-                });
-            }else{
-                scope.info[cur].children.push({
-                    node:'button',
-                    class:'btn btn-primary',
-                    content:'Create',
-                    attrs:[{name:'ng-click',value:'create()'}]
-                });
-            }
+            // if(scope.info[cur+1]){
+            // if(scope.info[cur].children[scope.info[cur].children.length-2].name!='next') {
+            //     scope.info[cur].children.push({
+            //         node: 'button',
+            //         class: 'btn btn-primary',
+            //         content: 'Next',
+            //         name:'next',
+            //         attrs: [
+            //             {name: 'ng-click', value: 'next()'},
+            //             {name: 'ng-show', value: cur + '<info.length-1'}
+            //         ]
+            //     });
+            // }
+            // // }else{
+            // // if(scope.info.length==1){
+            // if(scope.info[cur].children[scope.info[cur].children.length-1].name!='create') {
+            //     scope.info[cur].children.push({
+            //         node: 'button',
+            //         name:'create',
+            //         class: 'btn btn-primary',
+            //         content: 'Create',
+            //         attrs: [
+            //             {name: 'ng-click', value: 'create()'},
+            //             {name:'ng-show',value:cur+'==info.length-1'}
+            //         ]
+            //     });
+            // }
+            // }
             scope.formData={};
-            var formName = scope.info[cur].name;
+            var formName=[];
+            for(var o=0; o<scope.info.length;o++){
+                formName.push(scope.info[o].name);
+            }
             scope.msg = {
                 required: 'This field is required',
                 number: 'The value has to be a number',
@@ -34,9 +50,29 @@ angular.module("exercise1").directive("ex1Form",function($compile) {
                 max: 'The value is too high',
                 sameAs: 'The inputs don\'t match'
             };
-            element.append(buildNode(scope.info[cur]));     ///////////CREATE AND APPEND FORM TO ELEMENT
-            $compile(element.contents())(scope);    ///////////COMPILE THE CONTENTS
-            scope.form=scope[formName];
+            element.append(angular.element('<form>')
+                .attr('name','myForm')
+                .attr('novalidate','novalidate'));         ///////////APPEND FORM TO ELEMENT
+            var myForm = element.find('form');
+            myForm.append(buildNode(scope.info[scope.cur]));     ///////////BUILD NG-FORM IN FORM
+
+            myForm.append(angular.element('<button>')       ///////////APPEND A 'NEXT' BUTTON
+                .text('Next')
+                .addClass('btn btn-primary')
+                .attr('name','next')
+                .attr('ng-click','next()')
+                .attr('ng-show','cur<(info.length-1)'));
+
+            myForm.append(angular.element('<button>')       ////////APPEND A 'CREATE' BUTTON
+                .text('Create')
+                .addClass('btn btn-primary')
+                .attr('name','create')
+                .attr('ng-click','create()')
+                .attr('ng-show','cur==(info.length-1)'));
+
+            $compile(element.contents())(scope);            ///////////COMPILE THE CONTENTS
+            scope.formV=scope[formName[scope.cur]];
+            scope.formV.$notFinished=false;
 
             function fillAttrs(elem,attrs){
                     for(var i=0; i<attrs.length;i++){
@@ -48,14 +84,12 @@ angular.module("exercise1").directive("ex1Form",function($compile) {
                     }
                 }
             function buildNode(config){
-                var elem=angular.element('<'+config.node+'>');
                 if(config.node=='form'){
-                    config.attrs= config.attrs? config.attrs : [];
-                    config.attrs.push({name:'novalidate',value:true});
-                }
-                if(config.node=='fieldset'){
                     config.node='ng-form';
+                    config.attrs= config.attrs || [];
+                    config.attrs.push({name:'ng-show',value:'formV=='+formName[scope.cur]});
                 }
+                var elem=angular.element('<'+config.node+'>');
                 if(config.class){
                     elem.addClass(config.class);
                 }
@@ -77,8 +111,8 @@ angular.module("exercise1").directive("ex1Form",function($compile) {
                                 var att = attributes[e].name=='type' ? attributes[e].value : attributes[e].name;
                                 if(scope.msg[att]){
                                     var value = att=='sameAs' ?
-                                        '(formData.'+config.children[i].name +'!= formData.'+attributes[e].value+') && '+formName+'.$submitted' :
-                                        formName+'.'+config.children[i].name+'.$error.'+att+' && '+formName+'.$submitted';
+                                        '(formData.'+config.children[i].name +'!= formData.'+attributes[e].value+') && '+formName[scope.cur]+'.$notFinished' :
+                                        formName[scope.cur]+'.'+config.children[i].name+'.$error.'+att+' && '+formName[scope.cur]+'.$notFinished';
                                     elem.append(buildNode({
                                         node: 'span',
                                         class:'error',
@@ -97,24 +131,36 @@ angular.module("exercise1").directive("ex1Form",function($compile) {
                 }
                 return elem;
             }
-            var inputs = element.find('input');
-            for(var i=0; i<inputs.length; i++){
-                inputs[i] = angular.element(inputs[i]);
-                if(inputs[i].attr('sameAs')){
-                    if(scope.formData[inputs[i].attr('name')] != scope.formData[inputs[i].attr('sameAs')]){
-                        scope.form[inputs[i].attr('name')].$setValidity('sameAs',false);
-                    }else{
-                        scope.form[inputs[i].attr('name')].$setValidity('sameAs',true);
+            function checkSame() {
+                var form= element.children().eq(scope.cur);
+                var inputs = form.find('input');
+                for (var i = 0; i < inputs.length; i++) {
+                    inputs[i] = angular.element(inputs[i]);
+                    if (inputs[i].attr('sameAs')) {
+                        if (scope.formData[inputs[i].attr('name')] != scope.formData[inputs[i].attr('sameAs')]) {
+                            scope.formV[inputs[i].attr('name')].$setValidity('sameAs', false);
+                        } else {
+                            scope.formV[inputs[i].attr('name')].$setValidity('sameAs', true);
+                        }
                     }
                 }
             }
             scope.next=function(){
-                if(scope.form.$valid){
-
+                checkSame();
+                if(scope.formV.$valid){
+                    // scope.formV.$notFinished=false;
+                    // myForm.find('ng-form').attr('ng-show',false);
+                    myForm.prepend(buildNode(scope.info[++scope.cur]));
+                    $compile(element.contents())(scope);            ///////////COMPILE THE CONTENTS
+                    scope.formV=scope[formName[scope.cur]];
+                }else{
+                    scope[formName[scope.cur]].$notFinished=true;
                 }
             };
             scope.create = function (){
-                if(scope.form.$valid) {
+                checkSame();
+                if(scope.formV.$valid) {
+                    scope[formName[scope.cur]].$notFinished=false;
                     var done=false;
                     var data = {
                         name: scope.formData.name,
@@ -136,6 +182,8 @@ angular.module("exercise1").directive("ex1Form",function($compile) {
                     if(!done) {
                         scope.data.pokemon.push(data);
                     }
+                }else{
+                    scope[formName[scope.cur]].$notFinished=true;
                 }
             }
         }
