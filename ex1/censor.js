@@ -7,15 +7,8 @@ angular.module('exercise1')
             restrict:'A',
             scope:{},
             link:function(scope,element,attr){
-                scope.text=element.text();
-                var regex= new RegExp('\\S','g');
-                console.log(element.text().match(regex));
-                scope.replaced=scope.text.replace(regex,"*");
-                // element.text().replace(regex,function(){
-                //     return '*';
-                // });
-                console.log(scope.replaced);
-                element.text(scope.replaced);
+                element.css('backgroundColor','#000');
+                element.css('color','#000');
             }
         }
     })
@@ -25,9 +18,9 @@ angular.module('exercise1')
             scope:{},
             link:function(scope,element,attr){
                 var regex= new RegExp('\\S','g');
-                // console.log(element.text().match(regex));
-                // scope.replaced=scope.text.replace(regex,"*");
                 element.text(element.text().replace(regex,"*"));
+                element.css('backgroundColor','#000');
+                element.css('color','#000');
             }
         }
     });

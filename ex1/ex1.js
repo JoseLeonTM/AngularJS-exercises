@@ -24,7 +24,7 @@ angular.module("exercise1",['pokemon','ngRoute'])
                 templateUrl:"censor.html"
             })
         .otherwise({
-            templateUrl:"charts.html"
+            templateUrl:"censor.html"
         });
     })
     .controller("pokeCtrl",function($scope,pokeData){
