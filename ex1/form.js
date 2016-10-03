@@ -146,14 +146,16 @@ angular.module("exercise1").directive("ex1Form",function($compile) {
                 }
             }
             scope.next=function(){
+                console.log(formName[scope.cur]);
                 checkSame();
                 if(scope.formV.$valid){
-                    // scope.formV.$notFinished=false;
+                    scope.formV.$notFinished=false;
                     // myForm.find('ng-form').attr('ng-show',false);
                     myForm.prepend(buildNode(scope.info[++scope.cur]));
                     $compile(element.contents())(scope);            ///////////COMPILE THE CONTENTS
                     scope.formV=scope[formName[scope.cur]];
                 }else{
+                    console.log('not valid');
                     scope[formName[scope.cur]].$notFinished=true;
                 }
             };
