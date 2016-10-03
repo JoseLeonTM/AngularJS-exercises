@@ -7,18 +7,21 @@ angular.module("exercise1",['pokemon','ngRoute'])
 
         $routeProvider.when("/charts",{
             templateUrl:"charts.html"
-        })
+            })
             .when("/spread",{
                 templateUrl:"spreadsheet.html"
-        })
+            })
             .when("/gallery",{
                 templateUrl:"infinite.html"
-        })
+            })
             .when("/form",{
                 templateUrl:"form.html"
-        })
+            })
             .when("/multiform",{
                 templateUrl:"multiform.html"
+            })
+            .when("/censor",{
+                templateUrl:"censor.html"
             })
         .otherwise({
             templateUrl:"charts.html"
@@ -72,7 +75,7 @@ angular.module("exercise1",['pokemon','ngRoute'])
                         {node:'legend', content:'Stats',children:[
                             ]},
                         {node:'div', class:'form-group stats', children:[
-                            {node:'label', content:'Health Points:', attrs:[{name:'id',value:'hp'}]},
+                            {node:'label', content:'Health Points:'},
                             {node:'input', class:'form-control', name:'hp', attrs:[
                                 {name:'type',value:'number'},
                                 {name:'max',value:500},
@@ -82,7 +85,7 @@ angular.module("exercise1",['pokemon','ngRoute'])
                             ]}
                         ]},
                         {node:'div', class:'form-group stats', children:[
-                            {node:'label', content:'Attack:', attrs:[{name:'id',value:'atk'}]},
+                            {node:'label', content:'Attack:'},
                             {node:'input', class:'form-control', name:'atk', attrs:[
                                 {name:'type',value:'number'},
                                 {name:'max',value:300},
@@ -92,7 +95,7 @@ angular.module("exercise1",['pokemon','ngRoute'])
                             ]}
                         ]},
                         {node:'div', class:'form-group stats', children:[
-                            {node:'label', content:'Defense:', attrs:[{name:'id',value:'def'}]},
+                            {node:'label', content:'Defense:'},
                             {node:'input', class:'form-control', name:'def', attrs:[
                                 {name:'type',value:'number'},
                                 {name:'max',value:300},
@@ -102,7 +105,7 @@ angular.module("exercise1",['pokemon','ngRoute'])
                             ]}
                         ]},
                         {node:'div', class:'form-group stats', children:[
-                            {node:'label', content:'Speed:', attrs:[{name:'id',value:'spd'}]},
+                            {node:'label', content:'Speed:'},
                             {node:'input', class:'form-control', name:'spd', attrs:[
                                 {name:'type',value:'number'},
                                 {name:'max',value:300},
@@ -112,7 +115,7 @@ angular.module("exercise1",['pokemon','ngRoute'])
                             ]}
                         ]},
                         {node:'div', class:'form-group stats', children:[
-                            {node:'label', content:'Special Attack:', attrs:[{name:'id',value:'spatk'}]},
+                            {node:'label', content:'Special Attack:'},
                             {node:'input', class:'form-control', name:'spatk', attrs:[
                                 {name:'type',value:'number'},
                                 {name:'max',value:300},
@@ -122,7 +125,7 @@ angular.module("exercise1",['pokemon','ngRoute'])
                             ]}
                         ]},
                         {node:'div', class:'form-group stats', children:[
-                            {node:'label', content:'Special Defense:', attrs:[{name:'id',value:'spdef'}]},
+                            {node:'label', content:'Special Defense:'},
                             {node:'input', class:'form-control', name:'spdef', attrs:[
                                 {name:'type',value:'number'},
                                 {name:'max',value:300},
@@ -195,7 +198,7 @@ angular.module("exercise1",['pokemon','ngRoute'])
                 name:'pokeStats',
                 children:[
                     {node:'div', class:'form-group stats', children:[
-                        {node:'label', content:'Health Points:', attrs:[{name:'id',value:'hp'}]},
+                        {node:'label', content:'Health Points:'},
                         {node:'input', class:'form-control', name:'hp', attrs:[
                             {name:'type',value:'number'},
                             {name:'max',value:500},
@@ -205,7 +208,7 @@ angular.module("exercise1",['pokemon','ngRoute'])
                         ]}
                     ]},
                     {node:'div', class:'form-group stats', children:[
-                        {node:'label', content:'Attack:', attrs:[{name:'id',value:'atk'}]},
+                        {node:'label', content:'Attack:'},
                         {node:'input', class:'form-control', name:'atk', attrs:[
                             {name:'type',value:'number'},
                             {name:'max',value:300},
@@ -215,7 +218,7 @@ angular.module("exercise1",['pokemon','ngRoute'])
                         ]}
                     ]},
                     {node:'div', class:'form-group stats', children:[
-                        {node:'label', content:'Defense:', attrs:[{name:'id',value:'def'}]},
+                        {node:'label', content:'Defense:'},
                         {node:'input', class:'form-control', name:'def', attrs:[
                             {name:'type',value:'number'},
                             {name:'max',value:300},
@@ -225,7 +228,7 @@ angular.module("exercise1",['pokemon','ngRoute'])
                         ]}
                     ]},
                     {node:'div', class:'form-group stats', children:[
-                        {node:'label', content:'Speed:', attrs:[{name:'id',value:'spd'}]},
+                        {node:'label', content:'Speed:'},
                         {node:'input', class:'form-control', name:'spd', attrs:[
                             {name:'type',value:'number'},
                             {name:'max',value:300},
@@ -235,7 +238,7 @@ angular.module("exercise1",['pokemon','ngRoute'])
                         ]}
                     ]},
                     {node:'div', class:'form-group stats', children:[
-                        {node:'label', content:'Special Attack:', attrs:[{name:'id',value:'spatk'}]},
+                        {node:'label', content:'Special Attack:'},
                         {node:'input', class:'form-control', name:'spatk', attrs:[
                             {name:'type',value:'number'},
                             {name:'max',value:300},
@@ -245,7 +248,7 @@ angular.module("exercise1",['pokemon','ngRoute'])
                         ]}
                     ]},
                     {node:'div', class:'form-group stats', children:[
-                        {node:'label', content:'Special Defense:', attrs:[{name:'id',value:'spdef'}]},
+                        {node:'label', content:'Special Defense:'},
                         {node:'input', class:'form-control', name:'spdef', attrs:[
                             {name:'type',value:'number'},
                             {name:'max',value:300},
