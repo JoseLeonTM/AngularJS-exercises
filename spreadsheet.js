@@ -2,7 +2,7 @@
  * Created by Jose Leon on 8/29/2016.
  */
 angular.module("exercise1")
-    .directive("ex1Spreadsheet",function(){
+    .directive("spreadsheet",function(){
         return{
             restrict:"E",
             scope:true,

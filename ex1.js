@@ -5,7 +5,8 @@ angular.module("exercise1",['pokemon','ngRoute'])
     .config(function($routeProvider,$locationProvider){
         $locationProvider.html5Mode(true);
 
-        $routeProvider.when("/charts",{
+        $routeProvider
+            .when("/charts",{
             templateUrl:"charts.html"
             })
             .when("/spread",{
@@ -23,9 +24,9 @@ angular.module("exercise1",['pokemon','ngRoute'])
             .when("/censor",{
                 templateUrl:"censor.html"
             })
-        .otherwise({
-            templateUrl:"censor.html"
-        });
+            .otherwise({
+            templateUrl:"charts.html"
+            });
     })
     .controller("pokeCtrl",function($scope,pokeData){
         $scope.data={

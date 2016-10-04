@@ -2,7 +2,7 @@
  * Created by Jose Leon on 9/30/2016.
  */
 angular.module('exercise1')
-    .directive('ex1Censor1',function(){
+    .directive('censor1',function(){
         return{
             restrict:'A',
             scope:{},
@@ -12,7 +12,7 @@ angular.module('exercise1')
             }
         }
     })
-    .directive('ex1Censor2',function(){
+    .directive('censor2',function(){
         return{
             restrict:'A',
             scope:{},

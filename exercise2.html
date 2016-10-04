@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="exercise2">
+<head>
+    <meta charset="UTF-8">
+    <title>UI Routing</title>
+    <script src="../angular.js"></script>
+    <!--<script src="ui-router.js"></script>-->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
+
+    <script src="ex2.js"></script>
+    <script src="pokemon.js"></script>
+
+    <!--<script src="charts.js"></script>-->
+    <!--<script src="spreadsheet.js"></script>-->
+    <!--<script src="censor.js"></script>-->
+    <link href="reset.css" rel="stylesheet">
+    <link href="../bootstrap.css" rel="stylesheet">
+    <link href="../bootstrap-theme.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body ng-controller="uiCtrl">
+    <nav class="myMenu" role="navigation">
+        <a ui-sref="#">AngularUI Router</a>
+        <a ui-sref="charts" class="myMenu-option">Charts</a>
+        <a ui-sref="spread" class="myMenu-option">Spreadsheet</a>
+        <a ui-sref="censor" class="myMenu-option">Censor Text</a>
+    </nav>
+    <div class="container">
+        <h4>Custom directives</h4>
+        <div ui-view></div>
+    </div>
+</body>
+</html>

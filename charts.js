@@ -2,7 +2,7 @@
  * Created by Jose Leon on 8/24/2016.
  */
 angular.module("exercise1")    
-    .directive("ex1Graph",function(){
+    .directive("graph",function(){
         return {
             restrict:"E",
             template: function(){

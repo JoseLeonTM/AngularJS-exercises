@@ -1,41 +1,14 @@
 /**
  * Created by Jose Leon on 9/9/2016.
  */
-angular.module("exercise1").directive("ex1Form",function($compile) {
+angular.module("exercise1").directive("formVal",function($compile) {
     return {
         restrict: "E",
         scope:true,
         link: function(scope,element,attrs){
             scope.cur=0;
             scope.info=scope[attrs.info];
-            // if(scope.info[cur+1]){
-            // if(scope.info[cur].children[scope.info[cur].children.length-2].name!='next') {
-            //     scope.info[cur].children.push({
-            //         node: 'button',
-            //         class: 'btn btn-primary',
-            //         content: 'Next',
-            //         name:'next',
-            //         attrs: [
-            //             {name: 'ng-click', value: 'next()'},
-            //             {name: 'ng-show', value: cur + '<info.length-1'}
-            //         ]
-            //     });
-            // }
-            // // }else{
-            // // if(scope.info.length==1){
-            // if(scope.info[cur].children[scope.info[cur].children.length-1].name!='create') {
-            //     scope.info[cur].children.push({
-            //         node: 'button',
-            //         name:'create',
-            //         class: 'btn btn-primary',
-            //         content: 'Create',
-            //         attrs: [
-            //             {name: 'ng-click', value: 'create()'},
-            //             {name:'ng-show',value:cur+'==info.length-1'}
-            //         ]
-            //     });
-            // }
-            // }
+
             scope.formData={};
             var formName=[];
             for(var o=0; o<scope.info.length;o++){
@@ -146,16 +119,13 @@ angular.module("exercise1").directive("ex1Form",function($compile) {
                 }
             }
             scope.next=function(){
-                console.log(formName[scope.cur]);
                 checkSame();
                 if(scope.formV.$valid){
                     scope.formV.$notFinished=false;
-                    // myForm.find('ng-form').attr('ng-show',false);
                     myForm.prepend(buildNode(scope.info[++scope.cur]));
                     $compile(element.contents())(scope);            ///////////COMPILE THE CONTENTS
                     scope.formV=scope[formName[scope.cur]];
                 }else{
-                    console.log('not valid');
                     scope[formName[scope.cur]].$notFinished=true;
                 }
             };
