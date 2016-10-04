@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>UI Routing</title>
+
+    <link href="../reset.css" rel="stylesheet">
+    <link href="../../bootstrap.css" rel="stylesheet">
+    <link href="../styles.css" rel="stylesheet">
+
+    <script src="../../angular.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
+    <script src="ex2.js"></script>
+</head>
+<body ng-app="exercise2">
+    <nav class="myMenu" role="navigation">
+        <a ui-sref="home" class="myMenu-option">Home</a>
+        <a ui-sref="about" class="myMenu-option">About</a>
+    </nav>
+    <div class="container">
+        <h4>Dummy content</h4>
+        <div ui-view></div>
+    </div>
+</body>
+</html>
