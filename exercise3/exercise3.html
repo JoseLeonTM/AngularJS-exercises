@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="exercise3">
+<head>
+    <meta charset="UTF-8">
+    <title>Notes</title>
+    <script src="../../angular.js"></script>
+    <script src="ex3.js"></script>
+    <link href="../../bootstrap.css" rel="stylesheet">
+    <link href="../../bootstrap-theme.css" rel="stylesheet">
+    <link href="noteStyles.css" rel="stylesheet">
+</head>
+<body ng-controller="noteCtrl">
+    <!--<div class="well">-->
+        <nav class="myMenu">
+            <button class="myBtn btn-lg" ng-click="newNote()">New Note</button>
+            <button class="myBtn btn-lg">Erase All</button>
+        </nav>
+    <!--</div>-->
+    <div id="noteContainer">
+        <note></note>
+    </div>
+</body>
+</html>

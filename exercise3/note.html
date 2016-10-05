@@ -1,0 +1,11 @@
+<div class="noteBody">
+    <div class="noteTop">
+        <input class="normalize" autofocus="autofocus" disabled={{editable}}>
+        <button class="myBtn btn-sm" ng-show="editable" ng-click="accept()">Accept</button>
+        <button class="myBtn btn-sm" ng-hide="editable" ng-click="edit()">Edit</button>
+        <button class="myBtn btn-sm" ng-hide="editable" ng-click="delete()">Delete</button>
+    </div>
+    <div class="noteText">
+        <textarea class="normalize" rows="5" disabled="editable"></textarea>
+    </div>
+</div>
