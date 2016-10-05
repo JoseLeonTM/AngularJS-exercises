@@ -1,5 +1,5 @@
 body{
-    background-color: #0e0e0e;
+    background-color: #212121;
 }
 #noteContainer{
     margin:20px;
@@ -15,7 +15,9 @@ body{
     margin:3%;
     border-radius: 5px;
     border:5px double white;
+    height:200px;
     float:left;
+    color: #d9d2ff;
     /*box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);*/
 }
 .noteTop{
@@ -38,7 +40,7 @@ textarea{
     resize:none;
 }
 .normalize{
-    color: #d9d2ff;
+
     border:none;
     width:100%;
     background-color:inherit;

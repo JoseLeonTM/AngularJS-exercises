@@ -1,11 +1,15 @@
 <div class="noteBody">
     <div class="noteTop">
-        <input class="normalize" autofocus="autofocus" disabled={{editable}}>
-        <button class="myBtn btn-sm" ng-show="editable" ng-click="accept()">Accept</button>
-        <button class="myBtn btn-sm" ng-hide="editable" ng-click="edit()">Edit</button>
-        <button class="myBtn btn-sm" ng-hide="editable" ng-click="delete()">Delete</button>
+        <input class="normalize" autofocus="autofocus" ng-model="note.title" ng-if="editable">
+        <span ng-if="!editable" ng-bind="note.title"></span>
+        <div>
+            <button class="myBtn btn-sm" ng-show="editable" ng-click="save()">Save</button>
+            <button class="myBtn btn-sm" ng-hide="editable" ng-click="edit()">Edit</button>
+            <button class="myBtn btn-sm" ng-hide="editable" ng-click="delete()">Delete</button>
+        </div>
     </div>
     <div class="noteText">
-        <textarea class="normalize" rows="5" disabled="editable"></textarea>
+        <textarea class="normalize" rows="5" ng-model="note.text" ng-if="editable"></textarea>
+        <p ng-if="!editable" ng-bind="note.text"></p>
     </div>
 </div>
